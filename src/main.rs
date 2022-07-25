@@ -4,9 +4,13 @@ use stack_mod::stack::Stack;
 mod queue_mod;
 use queue_mod::queue::Queue;
 
+mod priority_queue_mod;
+use priority_queue_mod::priority_queue::PriorityQueue;
+
 fn main() {
     test_stack();
     test_queue();
+    test_priority_queue();
 }
 
 /**
@@ -37,7 +41,7 @@ fn test_stack() {
 /**
  * @desc 队列
  */
-pub fn test_queue() {
+fn test_queue() {
     let mut q = Queue::new();
 
     q.enqueue(1);
@@ -46,4 +50,30 @@ pub fn test_queue() {
 
     q.dequeue();
     println!("{:?}", q);
+}
+
+/**
+ * @desc 优先队列
+ */
+fn test_priority_queue() {
+    let mut pq = PriorityQueue::new();
+
+    pq.enqueue(2);
+    pq.enqueue(1);
+    pq.enqueue(3);
+    println!("{:?}", pq);
+
+    assert!(pq.min().unwrap() == 1);
+    assert!(pq.max().unwrap() == 3);
+
+    pq.delete_max();
+    println!("{:?}", pq);
+
+    pq.delete_min();
+    println!("{:?}", pq);
+
+    assert!(pq.len() == 1);
+
+    pq.delete_min();
+    assert!(pq.is_empty());
 }
