@@ -7,10 +7,14 @@ use queue_mod::queue::Queue;
 mod priority_queue_mod;
 use priority_queue_mod::priority_queue::PriorityQueue;
 
+mod binary_tree_mod;
+use binary_tree_mod::binary_tree::{BinarySearchTree, BinaryTree, Node};
+
 fn main() {
     test_stack();
     test_queue();
     test_priority_queue();
+    test_binary_tree();
 }
 
 /**
@@ -76,4 +80,34 @@ fn test_priority_queue() {
 
     pq.delete_min();
     assert!(pq.is_empty());
+}
+
+/**
+ * @desc 二叉树
+ */
+fn test_binary_tree() {
+    let mut root = Node::new("4", 4);
+    root.insert("5", 5);
+    root.insert("3", 3);
+    root.insert("6", 6);
+    root.insert("2", 2);
+    root.insert("7", 7);
+    println!("{:?}", root);
+
+    if let Some(ref left) = root.left {
+        assert!(left.value == 3);
+    }
+    if let Some(ref right) = root.right {
+        assert_eq!(right.key, "5");
+        if let Some(ref right) = right.right {
+            assert_eq!(right.key, "6");
+        }
+    }
+
+    println!("Pre Order traversal");
+    root.pre_order();
+    println!("In Order traversal");
+    root.in_order();
+    println!("Pos Order traversal");
+    root.pos_order();
 }
