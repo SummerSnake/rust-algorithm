@@ -2,6 +2,7 @@ use utils::{
     binary_tree_mod::binary_tree::{BinarySearchTree, BinaryTree, Node},
     priority_queue_mod::priority_queue::PriorityQueue,
     queue_mod::queue::Queue,
+    sort_mod::sort::Sort,
     stack_mod::stack::Stack,
 };
 
@@ -10,6 +11,7 @@ fn main() {
     test_queue();
     test_priority_queue();
     test_binary_tree();
+    test_sort();
 }
 
 /**
@@ -105,4 +107,12 @@ fn test_binary_tree() {
     root.in_order();
     println!("Pos Order traversal");
     root.pos_order();
+}
+
+/**
+ * @desc 排序
+ */
+fn test_sort() {
+    let mut arr = vec!['5', '3', '4', '1', '2'];
+    Sort::bubble_sort(&mut arr);
 }
