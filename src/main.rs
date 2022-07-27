@@ -1,14 +1,9 @@
-mod stack_mod;
-use stack_mod::stack::Stack;
-
-mod queue_mod;
-use queue_mod::queue::Queue;
-
-mod priority_queue_mod;
-use priority_queue_mod::priority_queue::PriorityQueue;
-
-mod binary_tree_mod;
-use binary_tree_mod::binary_tree::{BinarySearchTree, BinaryTree, Node};
+use utils::{
+    binary_tree_mod::binary_tree::{BinarySearchTree, BinaryTree, Node},
+    priority_queue_mod::priority_queue::PriorityQueue,
+    queue_mod::queue::Queue,
+    stack_mod::stack::Stack,
+};
 
 fn main() {
     test_stack();
