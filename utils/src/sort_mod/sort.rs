@@ -4,23 +4,37 @@ impl Sort {
     /**
      * @desc 冒泡排序
      */
-    pub fn bubble_sort<T: PartialOrd + Clone + std::fmt::Debug>(arr: &mut [T]) {
+    pub fn bubble_sort<T: PartialOrd + std::fmt::Debug>(arr: &mut [T]) {
         let len = arr.len();
-        let mut i = 0;
-        let mut j;
 
-        while i < len {
-            j = i + 1;
-
-            while j < len {
-                if arr[i] > arr[j] {
-                    arr.swap(i, j);
+        for i in 0..len {
+            for j in 0..len - i - 1 {
+                if arr[j] > arr[j + 1] {
+                    arr.swap(j, j + 1);
                 }
+            }
+        }
 
-                j += 1;
+        println!("{:?}", arr);
+    }
+
+    /**
+     * @desc 选择排序
+     */
+    pub fn selection_sort<T: PartialOrd + std::fmt::Debug>(arr: &mut [T]) {
+        let len = arr.len();
+        let mut min_index;
+
+        for i in 0..len - 1 {
+            min_index = i;
+
+            for j in i + 1..len {
+                if arr[j] < arr[min_index] {
+                    min_index = j;
+                }
             }
 
-            i += 1;
+            arr.swap(i, min_index)
         }
 
         println!("{:?}", arr);

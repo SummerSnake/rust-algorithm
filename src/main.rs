@@ -7,10 +7,10 @@ use utils::{
 };
 
 fn main() {
-    test_stack();
-    test_queue();
-    test_priority_queue();
-    test_binary_tree();
+    // test_stack();
+    // test_queue();
+    // test_priority_queue();
+    // test_binary_tree();
     test_sort();
 }
 
@@ -115,4 +115,7 @@ fn test_binary_tree() {
 fn test_sort() {
     let mut arr = vec!['5', '3', '4', '1', '2'];
     Sort::bubble_sort(&mut arr);
+
+    let mut arr = vec!['5', '3', '4', '1', '2'];
+    Sort::selection_sort(&mut arr);
 }
