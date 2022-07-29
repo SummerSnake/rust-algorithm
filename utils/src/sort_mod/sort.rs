@@ -60,4 +60,28 @@ impl Sort {
 
         println!("{:?}", arr);
     }
+
+    /**
+     * @desc 希尔排序
+     */
+    pub fn shell_sort<T: PartialOrd + std::fmt::Debug>(arr: &mut [T]) {
+        let len = arr.len();
+        let mut gap = len / 2;
+
+        while gap > 0 {
+            for i in gap..len {
+                let mut j = i;
+
+                while j > 0 && j >= gap {
+                    if arr[j - gap] > arr[j] {
+                        arr.swap(j, j - gap);
+                    }
+
+                    j -= gap;
+                }
+            }
+
+            gap /= 2;
+        }
+    }
 }
