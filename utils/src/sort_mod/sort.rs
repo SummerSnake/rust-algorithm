@@ -83,5 +83,51 @@ impl Sort {
 
             gap /= 2;
         }
+
+        println!("{:?}", arr);
+    }
+
+    /**
+     * @desc 归并排序
+     */
+    fn merge<T>(arr: &mut [T], divider: usize)
+    where
+        T: PartialOrd + std::fmt::Debug + Clone + Copy,
+    {
+        let divider = divider.min(arr.len());
+        let left = arr[..divider].to_vec();
+        let right = arr[divider..].to_vec();
+
+        let mut l = 0;
+        let mut r = 0;
+
+        for item in arr.iter_mut() {
+            if r == right.len() || (l < left.len() && left[l] < right[r]) {
+                *item = left[l];
+                l += 1;
+            } else {
+                *item = right[r];
+                r += 1;
+            }
+        }
+    }
+
+    pub fn merge_sort<T>(arr: &mut [T])
+    where
+        T: PartialOrd + std::fmt::Debug + Clone + Copy,
+    {
+        let mut step = 2;
+
+        while step < arr.len() {
+            arr.chunks_mut(step)
+                .for_each(|sub| Sort::merge(sub, step / 2));
+
+            step *= 2;
+        }
+
+        arr.chunks_mut(step)
+            .for_each(|sub| Sort::merge(sub, step / 2));
+
+        println!("{:?}", arr);
     }
 }
