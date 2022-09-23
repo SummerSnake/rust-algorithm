@@ -127,4 +127,7 @@ fn test_sort() {
 
     let mut arr = vec!['5', '3', '4', '1', '2'];
     Sort::merge_sort(&mut arr);
+
+    let mut arr = vec!['5', '3', '4', '1', '2'];
+    Sort::quick_sort(&mut arr);
 }

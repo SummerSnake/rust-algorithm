@@ -130,4 +130,52 @@ impl Sort {
 
         println!("{:?}", arr);
     }
+
+    /**
+     * @desc 快速排序
+     */
+    fn partition<T: PartialOrd>(arr: &mut [T], left: usize, right: usize) -> usize {
+        let pivot = right; // 基数的起始位置
+        let mut i = left;
+        let mut j = right;
+
+        loop {
+            while arr[i] < arr[pivot] {
+                i += 1;
+            }
+            while arr[j] > arr[pivot] {
+                j -= 1;
+            }
+
+            if i >= j {
+                break;
+            } else {
+                arr.swap(i, j);
+                i += 1;
+                j -= 1;
+            }
+        }
+
+        arr.swap(i, pivot);
+        i
+    }
+
+    fn quick_sort_range<T: PartialOrd>(arr: &mut [T], left: usize, right: usize) {
+        if left < right {
+            let partition = Sort::partition(arr, left, right);
+
+            Sort::quick_sort_range(arr, left, partition - 1);
+            Sort::quick_sort_range(arr, partition + 1, right);
+        }
+    }
+
+    pub fn quick_sort<T: PartialOrd + std::fmt::Debug>(arr: &mut [T]) {
+        let len = arr.len();
+
+        if len > 1 {
+            Sort::quick_sort_range(arr, 0, len - 1);
+        }
+
+        println!("{:?}", arr);
+    }
 }
