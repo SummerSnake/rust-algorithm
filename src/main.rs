@@ -1,5 +1,6 @@
 use utils::{
     binary_tree_mod::binary_tree::{BinarySearchTree, BinaryTree, Node},
+    majority_element_mod::{majority_element_01, majority_element_02, majority_element_03},
     priority_queue_mod::priority_queue::PriorityQueue,
     queue_mod::queue::Queue,
     sort_mod::sort::Sort,
@@ -12,6 +13,9 @@ fn main() {
     test_priority_queue();
     test_binary_tree();
     test_sort();
+    majority_element_01(vec![8, 8, 7, 7, 7]);
+    majority_element_02(vec![8, 8, 7, 7, 7]);
+    majority_element_03(vec![8, 8, 7, 7, 7]);
 }
 
 /**
